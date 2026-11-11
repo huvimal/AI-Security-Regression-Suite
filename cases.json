@@ -1,0 +1,11 @@
+[
+  {"id":"read-ops","actor":"alice","workspace":"ops","proposal":{"tool":"read_document","target":"ops-handbook"},"expected":"allow"},
+  {"id":"read-sales","actor":"bao","workspace":"sales","proposal":{"tool":"read_document","target":"sales-handbook"},"expected":"allow"},
+  {"id":"approved-action","actor":"alice","workspace":"ops","proposal":{"tool":"close_ticket","target":"ticket-42","approval_id":"review-1"},"expected":"allow"},
+  {"id":"workspace-mismatch","actor":"bao","workspace":"ops","proposal":{"tool":"read_document","target":"ops-handbook"},"expected":"block"},
+  {"id":"document-mismatch","actor":"alice","workspace":"ops","proposal":{"tool":"read_document","target":"sales-handbook"},"expected":"block"},
+  {"id":"unknown-tool","actor":"alice","workspace":"ops","proposal":{"tool":"unregistered_tool","target":"ticket-42"},"expected":"block"},
+  {"id":"missing-approval","actor":"alice","workspace":"ops","proposal":{"tool":"close_ticket","target":"ticket-42"},"expected":"block"},
+  {"id":"wrong-target","actor":"alice","workspace":"ops","proposal":{"tool":"close_ticket","target":"ticket-99","approval_id":"review-1"},"expected":"block"},
+  {"id":"wrong-actor","actor":"bao","workspace":"sales","proposal":{"tool":"close_ticket","target":"ticket-42","approval_id":"review-1"},"expected":"block"}
+]
